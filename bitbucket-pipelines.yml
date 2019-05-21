@@ -3,7 +3,7 @@ image: illbilly/sfdx #image with sfdx installed
 pipelines:
   default:
     - step:
-        name: Build and test
+        name: Build and tes
         script:
           - sfdx force:auth:jwt:grant --clientid 3MVG9er.T8KbeePRKRH4JnoMBFZPYvD0aglmscAwT77SSrsD1cPLZd19RjlDSev_En71d3xtUFY9rGIW.qL5O --jwtkeyfile $PRIVATE --username sanjaykumar2@deloitte.com.devreview --setalias dreamforce --instanceurl https://test.salesforce.com/
   tags:                         # add the 'tags' section
