@@ -1,12 +1,18 @@
-# This is a sample build configuration for Other.
-# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
-# Only use spaces to indent your .yml configuration.
-# -----
-# You can specify a custom docker image from Docker Hub as your build environment.
 image: atlassian/default-image:2
 
 pipelines:
-  default:
-    - step:
+ branches:
+    feature*:
+     - step:
         script:
-          - echo "Everything is awesome!"
+          - echo $SFDC_PROD_URL
+          - echo $(sfdx --version)
+          - sfdx force:auth:jwt:grant --clientid 3MVG9er.T8KbeePRKRH4JnoMBFZPYvD0aglmscAwT77SSrsD1cPLZd19RjlDSev_En71d3xtUFY9rGIW.qL5O --jwtkeyfile keys/server.key --username mdevaraju@deloitte.com.devreview --setalias dreamforce --instanceurl https://test.salesforce.com/
+          - sfdx force:mdapi:retrieve -c -d src -w 20 -l RunLocalTests -u dreamforce
+    master:
+                - step:
+                    script:
+                      - echo $SFDC_PROD_URL
+                                - echo $(sfdx --version)
+                                - sfdx force:auth:jwt:grant --clientid 3MVG9er.T8KbeePRKRH4JnoMBFZPYvD0aglmscAwT77SSrsD1cPLZd19RjlDSev_En71d3xtUFY9rGIW.qL5O --jwtkeyfile keys/server.key --username mdevaraju@deloitte.com.devreview --setalias dreamforce --instanceurl https://test.salesforce.com/
+                                - sfdx force:mdapi:retrieve -c -d src -w 20 -l RunLocalTests -u dreamforce
