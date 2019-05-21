@@ -5,7 +5,7 @@ pipelines:
     - step:
         name: Build and test
         script:
-          - sfdx force:auth:jwt:grant --clientid 3MVG9er.T8KbeePRKRH4JnoMBFZPYvD0aglmscAwT77SSrsD1cPLZd19RjlDSev_En71d3xtUFY9rGIW.qL5O --jwtkeyfile bin/server.key --username mdevaraju@deloitte.com.devreview --setalias dreamforce --instanceurl https://test.salesforce.com/
+          - sfdx force:auth:jwt:grant --clientid 3MVG9er.T8KbeePRKRH4JnoMBFZPYvD0aglmscAwT77SSrsD1cPLZd19RjlDSev_En71d3xtUFY9rGIW.qL5O --jwtkeyfile $Private --username mdevaraju@deloitte.com.devreview --setalias dreamforce --instanceurl https://test.salesforce.com/
   tags:                         # add the 'tags' section
     release-*:                  # specify the tag
       - step:                   # define the build pipeline for the tag
