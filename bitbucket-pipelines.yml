@@ -5,7 +5,7 @@ pipelines:
     - step:
         name: Build and test
         script:
-          - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY_HUB --jwtkeyfile bin/server.key --username $TARGET_USERNAME --setdefaultdevhubusername
+          - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY_HUB --jwtkeyfile bin/server.key --username $TARGET_USERNAME --setdefaultdevhubusername -r https://test.salesforce.com/
   tags:                         # add the 'tags' section
     release-*:                  # specify the tag
       - step:                   # define the build pipeline for the tag
